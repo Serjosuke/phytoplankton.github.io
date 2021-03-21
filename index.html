@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+            #centerLayer {
+     margin-left: 10%; 
+     margin-right: 30%; 
+     margin-top: 7%;   
+      
+    }
+html {
+            height: 100%; 
+            background: #000 url(https://goarctic.ru/upload/iblock/e66/e66df25dbba7749196aa5d0ac119efd9.jpg); background-size: cover;           
+            no-repeat center;   
+            }
+        #map {
+            width: 1500px;
+            height: 700px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="centerLayer">
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/Data4_1.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[44.464991970635765,105.53552575],[85.16165802936422,162.32726425]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        map.createPane('pane_GoogleMaps_0');
+        map.getPane('pane_GoogleMaps_0').style.zIndex = 400;
+        var layer_GoogleMaps_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=m&x={x}&y={y}&z={z}', {
+            pane: 'pane_GoogleMaps_0',
+            opacity: 1.0,
+            attribution: '',
+            minZoom: 1,
+            maxZoom: 28,
+            minNativeZoom: 0,
+            maxNativeZoom: 19
+        });
+        layer_GoogleMaps_0;
+        map.addLayer(layer_GoogleMaps_0);
+        function pop_Data4_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['field_1'] !== null ? autolinker.link(feature.properties['field_1'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR1A'] !== null ? autolinker.link(feature.properties['VAR1A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR2A'] !== null ? autolinker.link(feature.properties['VAR2A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR3A'] !== null ? autolinker.link(feature.properties['VAR3A'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR4'] !== null ? autolinker.link(feature.properties['VAR4'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR5'] !== null ? autolinker.link(feature.properties['VAR5'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR6'] !== null ? autolinker.link(feature.properties['VAR6'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR7'] !== null ? autolinker.link(feature.properties['VAR7'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR8'] !== null ? autolinker.link(feature.properties['VAR8'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR9'] !== null ? autolinker.link(feature.properties['VAR9'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR10'] !== null ? autolinker.link(feature.properties['VAR10'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR11'] !== null ? autolinker.link(feature.properties['VAR11'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR12'] !== null ? autolinker.link(feature.properties['VAR12'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR13'] !== null ? autolinker.link(feature.properties['VAR13'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR14'] !== null ? autolinker.link(feature.properties['VAR14'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR15'] !== null ? autolinker.link(feature.properties['VAR15'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR16'] !== null ? autolinker.link(feature.properties['VAR16'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR17'] !== null ? autolinker.link(feature.properties['VAR17'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR18'] !== null ? autolinker.link(feature.properties['VAR18'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR19'] !== null ? autolinker.link(feature.properties['VAR19'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR20'] !== null ? autolinker.link(feature.properties['VAR20'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR21'] !== null ? autolinker.link(feature.properties['VAR21'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR22'] !== null ? autolinker.link(feature.properties['VAR22'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR23'] !== null ? autolinker.link(feature.properties['VAR23'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR24'] !== null ? autolinker.link(feature.properties['VAR24'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR25'] !== null ? autolinker.link(feature.properties['VAR25'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR26'] !== null ? autolinker.link(feature.properties['VAR26'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR27'] !== null ? autolinker.link(feature.properties['VAR27'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR28'] !== null ? autolinker.link(feature.properties['VAR28'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR29'] !== null ? autolinker.link(feature.properties['VAR29'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR30'] !== null ? autolinker.link(feature.properties['VAR30'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR31'] !== null ? autolinker.link(feature.properties['VAR31'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR32'] !== null ? autolinker.link(feature.properties['VAR32'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR33'] !== null ? autolinker.link(feature.properties['VAR33'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR34'] !== null ? autolinker.link(feature.properties['VAR34'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR35'] !== null ? autolinker.link(feature.properties['VAR35'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR36'] !== null ? autolinker.link(feature.properties['VAR36'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR37'] !== null ? autolinker.link(feature.properties['VAR37'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR38'] !== null ? autolinker.link(feature.properties['VAR38'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR39'] !== null ? autolinker.link(feature.properties['VAR39'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR40'] !== null ? autolinker.link(feature.properties['VAR40'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR41'] !== null ? autolinker.link(feature.properties['VAR41'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR42'] !== null ? autolinker.link(feature.properties['VAR42'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR43'] !== null ? autolinker.link(feature.properties['VAR43'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR44'] !== null ? autolinker.link(feature.properties['VAR44'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR45'] !== null ? autolinker.link(feature.properties['VAR45'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR46'] !== null ? autolinker.link(feature.properties['VAR46'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR47'] !== null ? autolinker.link(feature.properties['VAR47'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR48'] !== null ? autolinker.link(feature.properties['VAR48'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR49'] !== null ? autolinker.link(feature.properties['VAR49'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR50'] !== null ? autolinker.link(feature.properties['VAR50'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR51'] !== null ? autolinker.link(feature.properties['VAR51'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR52'] !== null ? autolinker.link(feature.properties['VAR52'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR53'] !== null ? autolinker.link(feature.properties['VAR53'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR54'] !== null ? autolinker.link(feature.properties['VAR54'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR55'] !== null ? autolinker.link(feature.properties['VAR55'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR56'] !== null ? autolinker.link(feature.properties['VAR56'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR57'] !== null ? autolinker.link(feature.properties['VAR57'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR58'] !== null ? autolinker.link(feature.properties['VAR58'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR59'] !== null ? autolinker.link(feature.properties['VAR59'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR60'] !== null ? autolinker.link(feature.properties['VAR60'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR61'] !== null ? autolinker.link(feature.properties['VAR61'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR62'] !== null ? autolinker.link(feature.properties['VAR62'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR63'] !== null ? autolinker.link(feature.properties['VAR63'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR64'] !== null ? autolinker.link(feature.properties['VAR64'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['VAR65'] !== null ? autolinker.link(feature.properties['VAR65'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Data4_1_0() {
+            return {
+                pane: 'pane_Data4_1',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(145,82,45,1.0)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Data4_1');
+        map.getPane('pane_Data4_1').style.zIndex = 401;
+        map.getPane('pane_Data4_1').style['mix-blend-mode'] = 'normal';
+        var layer_Data4_1 = new L.geoJson(json_Data4_1, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Data4_1',
+            layerName: 'layer_Data4_1',
+            pane: 'pane_Data4_1',
+            onEachFeature: pop_Data4_1,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Data4_1_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Data4_1);
+        map.addLayer(layer_Data4_1);
+        setBounds();
+        </script>
+    </body>
+</html>
